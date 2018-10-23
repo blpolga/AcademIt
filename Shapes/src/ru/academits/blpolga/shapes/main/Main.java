@@ -1,18 +1,18 @@
 package ru.academits.blpolga.shapes.main;
 
-import ru.academits.blpolga.shapes.*;
-import ru.academits.blpolga.shapes.areaComparator.ArraysComparator;
-import ru.academits.blpolga.shapes.perimeterComparator.PerimeterComparator;
+import ru.academits.blpolga.shapes.Comparators.ArraysComparator;
+import ru.academits.blpolga.shapes.Comparators.PerimeterComparator;
+import ru.academits.blpolga.shapes.shape.*;
 
 import java.util.Arrays;
 
 public class Main {
-    public static Shapes getMaxAreaShape(Shapes... array) {
+    private static Shapes getMaxAreaShape(Shapes... array) {
         Arrays.sort(array, new ArraysComparator());
         return array[array.length - 1];
     }
 
-    public static Shapes getSecondPerimeterShape(Shapes... array) {
+    private static Shapes getSecondPerimeterShape(Shapes... array) {
         Arrays.sort(array, new PerimeterComparator());
         return array[array.length - 2];
     }

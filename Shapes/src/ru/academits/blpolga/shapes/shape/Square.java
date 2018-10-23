@@ -1,34 +1,34 @@
-package ru.academits.blpolga.shapes;
+package ru.academits.blpolga.shapes.shape;
 
-public class Circle implements Shapes {
-    private double radius;
+public class Square implements Shapes {
+    private double length;
 
-    public Circle(double radius) {
-        this.radius = radius;
+    public Square(double length) {
+        this.length = length;
     }
 
     @Override
     public double getWidth() {
-        return radius + radius;
+        return length;
     }
 
     @Override
     public double getHeight() {
-        return radius + radius;
+        return length;
     }
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.pow(length, 2);
     }
 
     @Override
     public double getPerimeter() {
-        return Math.PI * 2 * radius;
+        return 4 * length;
     }
 
     public String toString() {
-        return "Circle " + "radius = " + radius;
+        return "Square " + "length = " + length;
     }
 
     @Override
@@ -39,15 +39,15 @@ public class Circle implements Shapes {
         if ((object == null) || (object.getClass() != this.getClass())) {
             return false;
         }
-        Circle circle = (Circle) object;
-        return radius == circle.radius;
+        Square square = (Square) object;
+        return length == square.length;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = (int) (prime * result + radius);
+        result = prime * result + Double.hashCode(length);
         return result;
     }
 }

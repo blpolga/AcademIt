@@ -1,6 +1,6 @@
-package ru.academits.blpolga.shapes.perimeterComparator;
+package ru.academits.blpolga.shapes.Comparators;
 
-import ru.academits.blpolga.shapes.Shapes;
+import ru.academits.blpolga.shapes.shape.Shapes;
 
 import java.util.Comparator;
 

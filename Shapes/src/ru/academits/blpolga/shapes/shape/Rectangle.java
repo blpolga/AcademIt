@@ -1,4 +1,4 @@
-package ru.academits.blpolga.shapes;
+package ru.academits.blpolga.shapes.shape;
 
 public class Rectangle implements Shapes {
     private double width;
@@ -50,8 +50,8 @@ public class Rectangle implements Shapes {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = (int) (prime * result + width);
-        result = (int) (prime * result + height);
+        result = prime * result + Double.hashCode(width);
+        result = prime * result + Double.hashCode(height);
         return result;
     }
 }

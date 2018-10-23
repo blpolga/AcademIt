@@ -1,4 +1,4 @@
-package ru.academits.blpolga.shapes;
+package ru.academits.blpolga.shapes.shape;
 
 public interface Shapes {
     double getWidth();

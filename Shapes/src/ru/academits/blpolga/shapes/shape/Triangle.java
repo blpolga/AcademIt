@@ -1,4 +1,4 @@
-package ru.academits.blpolga.shapes;
+package ru.academits.blpolga.shapes.shape;
 
 public class Triangle implements Shapes {
     private double x1;
@@ -64,12 +64,12 @@ public class Triangle implements Shapes {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = (int) (prime * result + x1);
-        result = (int) (prime * result + x2);
-        result = (int) (prime * result + x3);
-        result = (int) (prime * result + y1);
-        result = (int) (prime * result + y2);
-        result = (int) (prime * result + y3);
+        result = prime * result + Double.hashCode(x1);
+        result = prime * result + Double.hashCode(x2);
+        result = prime * result + Double.hashCode(x3);
+        result = prime * result + Double.hashCode(y1);
+        result = prime * result + Double.hashCode(y2);
+        result = prime * result + Double.hashCode(y3);
         return result;
     }
 }
