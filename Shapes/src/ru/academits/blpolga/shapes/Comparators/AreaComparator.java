@@ -4,7 +4,7 @@ import ru.academits.blpolga.shapes.shape.Shapes;
 
 import java.util.Comparator;
 
-public class ArraysComparator implements Comparator<Shapes> {
+public class AreaComparator implements Comparator<Shapes> {
     @Override
     public int compare(Shapes o1, Shapes o2) {
         double area1 = o1.getArea();
