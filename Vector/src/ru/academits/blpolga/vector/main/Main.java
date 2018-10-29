@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        double[] vector1Array = {1, 2, 4, 5};
+        double[] vector1Array = {1, 2};
         Vector vector1 = new Vector(vector1Array);
         System.out.println("Параметры вектора1: " + vector1.toString());
         System.out.println("Размер вектора = " + vector1.getSize());

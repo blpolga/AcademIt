@@ -50,7 +50,7 @@ public class Vector {
     public void subtractVectors(Vector vector) {
         Vector v = new Vector(vector);
         if (this.coordinates.length < vector.getSize()) {
-            coordinates = Arrays.copyOf(vector.coordinates, vector.coordinates.length);
+            coordinates = Arrays.copyOf(this.coordinates, vector.coordinates.length);
         }
         for (int i = 0; i < v.coordinates.length; i++) {
             this.coordinates[i] -= v.coordinates[i];
