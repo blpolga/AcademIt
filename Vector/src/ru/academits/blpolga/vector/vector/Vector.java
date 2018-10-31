@@ -8,9 +8,8 @@ public class Vector {
     public Vector(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Illegal Argument Exception");
-        } else {
-            coordinates = new double[n];
         }
+        coordinates = new double[n];
     }
 
     public Vector(Vector vector) {
@@ -20,58 +19,60 @@ public class Vector {
     public Vector(double[] array) {
         if (array.length == 0) {
             throw new IllegalArgumentException("Illegal Argument Exception");
-        } else {
-            coordinates = Arrays.copyOf(array, array.length);
         }
+        coordinates = Arrays.copyOf(array, array.length);
     }
 
     public Vector(int n, double[] array) {
         if (n <= 0 || array.length == 0) {
             throw new IllegalArgumentException("Illegal Argument Exception");
-        } else {
-            coordinates = Arrays.copyOf(array, n);
         }
+        coordinates = Arrays.copyOf(array, n);
     }
 
     public String toString() {
-        return Arrays.toString(coordinates).replace("[", "{").replace("]", "}");
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (int i = 0; i < coordinates.length - 1; i++) {
+            sb.append(coordinates[i]).append(",");
+        }
+        sb.append(coordinates[coordinates.length - 1]).append("}");
+        return sb.toString();
     }
 
-    public void addVectors(Vector vector) {
-        Vector v = new Vector(vector);
+    public void addVector(Vector vector) {
         if (this.coordinates.length < vector.getSize()) {
             coordinates = Arrays.copyOf(this.coordinates, vector.coordinates.length);
         }
-        for (int i = 0; i < v.coordinates.length; i++) {
-            this.coordinates[i] += v.coordinates[i];
+        for (int i = 0; i < vector.coordinates.length; i++) {
+            this.coordinates[i] += vector.coordinates[i];
         }
     }
 
-    public void subtractVectors(Vector vector) {
-        Vector v = new Vector(vector);
+    public void subtractVector(Vector vector) {
         if (this.coordinates.length < vector.getSize()) {
             coordinates = Arrays.copyOf(this.coordinates, vector.coordinates.length);
         }
-        for (int i = 0; i < v.coordinates.length; i++) {
-            this.coordinates[i] -= v.coordinates[i];
+        for (int i = 0; i < vector.coordinates.length; i++) {
+            this.coordinates[i] -= vector.coordinates[i];
         }
     }
 
-    public void multiplicationVectors(double scalar) {
+    public void scalarMultiplication(double scalar) {
         for (int i = 0; i < this.coordinates.length; i++) {
             this.coordinates[i] *= scalar;
         }
     }
 
-    public static Vector addVectors(Vector vector1, Vector vector2) {
+    public static Vector addVector(Vector vector1, Vector vector2) {
         Vector v = new Vector(vector1);
-        v.addVectors(vector2);
+        v.addVector(vector2);
         return v;
     }
 
     public static Vector subVectors(Vector vector1, Vector vector2) {
         Vector v = new Vector(vector1);
-        v.subtractVectors(vector2);
+        v.subtractVector(vector2);
         return v;
     }
 
@@ -84,29 +85,29 @@ public class Vector {
         return result;
     }
 
-    public Vector reverseVector() {
-        multiplicationVectors(-1);
+    public Vector reverse() {
+        scalarMultiplication(-1);
         return this;
     }
 
     public double getLength() {
         double length = 0;
-        for (int i = 0; i < this.getSize(); i++) {
-            length += Math.pow(this.coordinates[i], 2);
+        for (double e : this.coordinates) {
+            length += Math.pow(e, 2);
         }
-        return length;
+        return Math.sqrt(length);
     }
 
     public double getElement(int i) {
         if (i >= this.getSize() || i < 0) {
-            throw new IllegalArgumentException("Выход за пределы размерности");
+            throw new IndexOutOfBoundsException("Выход за пределы размерности");
         }
         return this.coordinates[i];
     }
 
     public void setElement(int i, double component) {
         if (i >= this.getSize() || i < 0) {
-            throw new IllegalArgumentException("Выход за пределы размерности");
+            throw new IndexOutOfBoundsException("Выход за пределы размерности");
         }
         this.coordinates[i] = component;
     }
@@ -125,8 +126,7 @@ public class Vector {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        return prime + Arrays.hashCode(this.coordinates);
+        return Arrays.hashCode(this.coordinates);
     }
 
     public int getSize() {
